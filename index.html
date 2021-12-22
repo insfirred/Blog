@@ -6,7 +6,240 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/icon/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            width: 100vw;
+            height: 62px;
+        }
+        
+        .logo {
+            padding-left: 20px;
+        }
+        
+        .logo img {
+            width: 50px;
+            cursor: pointer;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            padding: 0 20px;
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .nav-links a:hover {
+            color: rgb(185, 151, 151);
+            transition: all 0.3s ease;
+        }
+        
+        #showcase {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #showcase h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 50px;
+            margin-top: 30px;
+        }
+        
+        #showcase h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            margin: 10px 40px 0 40px;
+        }
+        
+        .floating-icons {
+            width: 85vw;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        @keyframes bounce1 {
+            0% {
+                top: -25px;
+            }
+            50% {
+                top: 25px;
+            }
+            100% {
+                top: -25px;
+            }
+        }
+        
+        .animation1 {
+            position: relative;
+            animation: bounce1 2s linear infinite;
+        }
+        
+        @keyframes bounce2 {
+            0% {
+                top: -10px;
+            }
+            35% {
+                top: 25px;
+            }
+            85% {
+                top: -25px;
+            }
+            100% {
+                top: -10px;
+            }
+        }
+        
+        .animation2 {
+            position: relative;
+            animation: bounce2 2s linear infinite;
+        }
+        
+        @keyframes bounce3 {
+            0% {
+                top: 5px;
+            }
+            20% {
+                top: 25px;
+            }
+            70% {
+                top: -25px;
+            }
+            100% {
+                top: 5px;
+            }
+        }
+        
+        .animation3 {
+            position: relative;
+            animation: bounce3 2s linear infinite;
+        }
+        
+        @keyframes bounce4 {
+            0% {
+                top: 20px;
+            }
+            5% {
+                top: 25px;
+            }
+            55% {
+                top: -25px;
+            }
+            100% {
+                top: 20px;
+            }
+        }
+        
+        .animation4 {
+            position: relative;
+            animation: bounce4 2s linear infinite;
+        }
+        
+        .member-cards {
+            width: 92%;
+            height: 300px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        .card {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        
+        .names {
+            font-family: 'Roboto', sans-serif;
+            margin: 15px 0 10px 0;
+            font-size: 30px;
+        }
+        
+        .social-icons {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        .social-icons a:hover {
+            opacity: 60%;
+            transition: all 0.3s ease;
+        }
+        
+        .icons {
+            width: 30px;
+        }
+        
+        #pop-bar {
+            visibility: hidden;
+        }
+        
+        .member-pic {
+            width: 200px;
+            border: 3px solid black;
+            border-radius: 50%;
+        }
+        
+        #close-icon {
+            visibility: hidden;
+            margin-bottom: 13px;
+        }
+        
+        @media(max-width: 800px) {
+            #pop-bar {
+                visibility: visible;
+                padding-right: 25px;
+            }
+            .nav-links {
+                position: absolute;
+                visibility: hidden;
+                display: flex;
+                flex-direction: column;
+                top: 5px;
+                right: 10px;
+            }
+            .nav-links a {
+                padding: 8px 0;
+            }
+            .member-cards {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+            }
+            .card {
+                width: 300px;
+                height: 306px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                margin: 25px 0;
+            }
+            .popbar-hidden {
+                visibility: hidden;
+            }
+        }
+    </style>
     <title>Blog</title>
 </head>
 
@@ -65,7 +298,23 @@
             </div>
         </div>
     </section>
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('pop-bar').addEventListener('click', function() {
+            document.getElementById('pop-bar').style.visibility = "hidden";
+            document.getElementById('navlinks').style.visibility = "visible";
+            document.getElementById('close-icon').style.visibility = "visible";
+            document.getElementById('heading').style.marginTop = "120px";
+        });
+
+
+
+        document.getElementById('close-icon').addEventListener('click', function() {
+            document.getElementById('pop-bar').style.visibility = "visible";
+            document.getElementById('navlinks').style.visibility = "hidden";
+            document.getElementById('close-icon').style.visibility = "hidden";
+            document.getElementById('heading').style.marginTop = "30px";
+        })
+    </script>
 </body>
 
 </html>
